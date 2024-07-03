@@ -25,6 +25,8 @@ Once, (a, b) found for c, while moving on to finding next (a, b)
  */
 var threeSum = function(nums) {
     let n = nums.length;
+
+    // Sort to apply 2sum
     nums.sort((x, y) => x - y);
     let result = [];
 
