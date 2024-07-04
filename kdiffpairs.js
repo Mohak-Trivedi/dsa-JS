@@ -5,10 +5,10 @@
 // Problems with this approach:
 // 1. Can't prevent duplicate pairs
 // 2. Works now because constraint for nums.length is 10^4 max, but if it were 
+// 10^5, we would get TLE.
 
 // Optimized Approach: TC: O(NlogN), SC: O(1)
 // Not using extreme 2-pointers because it is not monotonic for difference.
-// 
 /**
  * @param {number[]} nums
  * @param {number} k
@@ -44,7 +44,7 @@ var findPairs = function(nums, k) {
             left++;
             right++;
 
-            // ensure the pair isn't duplicate
+            // ensure this next pair isn't duplicate
             while(nums[left]===nums[left-1] && left<n) {
                 left++;
             }
