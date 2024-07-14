@@ -1,4 +1,5 @@
 function f(arr, i) {
+    // Base Case
     if(i === arr.length) return 0;
 
     return arr[i] + f(arr, i + 1);
