@@ -10,6 +10,8 @@ function multiplyMatrices(mat1, m, n, mat2, k) {
     for(let i = 0;i < m;i++) { // ith row out of m rows of matProd
         for(let j = 0;j < k;j++) { // jth col out of k cols of matProd
 
+            // To get matProd[i][j] we need to multiply all n cols of ith row of mat1
+            // with all n rows of jth col of mat2
             for(let x = 0;x < n;x++) { // xth col out of n cols of mat1 and xth row out of n rows of mat2
                 matProd[i][j] += mat1[i][x] * mat2[x][j];
             }
