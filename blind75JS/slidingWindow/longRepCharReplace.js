@@ -10,6 +10,14 @@
 // Do the above steps for r: 0 -> s.length - 1
 // return maxLen
 
+// How to find the number of replacements required in the current substring?
+// For a substring "ABA" and k = 2, we decide, we will replace 1 char B with A
+// For a substring "AABAAC" and k = 2, we decide, we will replace 2 chars B and C with A
+// Basically, we determine maxFreq and then replace the remaining (subStringLength - maxFreq)
+// chars.
+// To get the maxFreq, maintain a freqMap i.e. a frequency array. Each time you
+// update the freqMap, check if maxFreq needs to be updated.
+
 /**
  * @param {string} s
  * @param {number} k
