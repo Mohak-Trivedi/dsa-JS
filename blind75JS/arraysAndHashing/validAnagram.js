@@ -51,3 +51,20 @@ const checkFreq = (map) => {
 
   return true;
 };
+
+// Approach 2: TC: O(NlogN), SC: O(N)
+// Using Sorting
+// If the sorted versions of s and t are same, then they are anagrams of each
+// other, else not.
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) return false;
+
+  return reorder(s) === reorder(t);
+};
+
+var reorder = (str) => {
+  str
+    .split("")
+    .sort((a, b) => a.localeCompare(b)) // localeCompare() for Unicode characters
+    .join("");
+};
