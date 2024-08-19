@@ -1,6 +1,6 @@
 // Problem: https://leetcode.com/problems/valid-parentheses/
 
-// Optimized Approach: TC: O(N), SC: O(N)
+// Optimized Approach: TC: O(N), SC: O(N + 3) -> O(N)
 // Using Stack and Map
 /**
  * @param {string} s
