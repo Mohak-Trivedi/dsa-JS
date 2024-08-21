@@ -7,6 +7,7 @@
 // It is swap-heavy.
 
 function bubbleSort(arr) {
+  let n = arr.length;
   for (let iter = 1; iter <= n - 1; iter++) {
     // Do bubbling for n-1 elements
 
@@ -14,7 +15,7 @@ function bubbleSort(arr) {
     // in case of already sorted array
 
     for (let i = 0; i < n - iter - 1; i++) {
-      // [n - iter - 1, arr.length - 1] is sorted range.
+      // [n - iter - 1, n - 1] is sorted range.
       if (arr[i] > arr[i + 1]) {
         let temp = arr[i];
         arr[i] = arr[i + 1];
