@@ -1,3 +1,16 @@
+// Implement Selection Sort algo.
+
+// TC: O(N^2), SC: O(1) in all cases.
+// i.e. even if array is sorted, it will be O(N^2)
+
+// Comparison-based, in-place, unstable sorting algorithm.
+// Prefer to use this when you want to limit swaps.
+// N^2 comparisons, N swaps in worst case.
+
+// Algo:
+// At each index i of array to be sorted, swap it with the minimum element in
+// the range [i+1, arr.length-1].
+
 // Given an array and index i, return the index from the range [i, arr.length-1]
 // where the minimum value is present.
 function getMinIndex(arr, i) {
