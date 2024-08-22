@@ -16,7 +16,7 @@
 
 function bubbleSort(arr) {
   let n = arr.length;
-  for (let iter = 1; iter <= n - 1; iter++) {
+  for (let iter = 0; iter < n - 1; iter++) {
     // Do bubbling for n-1 elements
 
     let isSwapped = false; // track if swapping done or not to prevent extra work
