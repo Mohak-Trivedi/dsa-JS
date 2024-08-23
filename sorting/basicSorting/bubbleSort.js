@@ -16,14 +16,13 @@
 
 function bubbleSort(arr) {
   let n = arr.length;
-  for (let iter = 0; iter < n - 1; iter++) {
-    // Do bubbling for n-1 elements
 
-    let isSwapped = false; // track if swapping done or not to prevent extra work
-    // in case of already sorted array
+  // Do bubbling for n-1 elements
+  for (let iter = 1; iter <= n - 1; iter++) {
+    let isSwapped = false; // to track if [0, n - 1 - iter] is already sorted
 
-    for (let i = 0; i < n - iter - 1; i++) {
-      // [n - iter - 1, n - 1] is sorted range.
+    // (n - 1 - iter, n - 1] is sorted range
+    for (let i = 0; i <= n - 1 - iter; i++) {
       if (arr[i] > arr[i + 1]) {
         let temp = arr[i];
         arr[i] = arr[i + 1];
@@ -33,7 +32,7 @@ function bubbleSort(arr) {
       }
     }
 
-    if (isSwapped === false) break;
+    if (isSwapped === false) return;
   }
 }
 

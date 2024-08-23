@@ -9,9 +9,9 @@
 // Do bubbling for only the first K elements.
 function bubbleSort(arr, k) {
   let n = arr.length;
-  for (let iter = 0; iter < k; iter++) {
+  for (let iter = 1; iter <= k; iter++) {
     let isSwapped = false;
-    for (let i = 0; i < n - iter - 1; i++) {
+    for (let i = 0; i <= n - 1 - iter; i++) {
       if (arr[i] > arr[i + 1]) {
         let temp = arr[i];
         arr[i] = arr[i + 1];
@@ -20,7 +20,7 @@ function bubbleSort(arr, k) {
         isSwapped = true;
       }
     }
-    if (isSwapped === false) break;
+    if (isSwapped === false) return;
   }
 }
 
