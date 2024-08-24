@@ -1,4 +1,6 @@
-// TC: O(N^2), Omega(N), SC: O(1)
+// TC: O(N^2) i.e. when array is totally reverse of sorted, Omega(N) i.e. array
+// is already sorted or almost sorted means one or two elements are in non-sorted
+// position, SC: O(1)
 
 // Camparison-based, In-place, Stable
 // Not swap-heavy. But, more swap-heavy in comparison Selection Sort.
