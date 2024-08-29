@@ -2,10 +2,11 @@
 // A[i] > A[j] then the pair (i, j) is called an inversion of A. Given n and an
 // array A, your task is to find the number of inversions of A.
 
-// Brute Force:
-//
+// Brute Force: TC: O(N^2), SC: O(1)
+// Obtain each pair and increase count if it is an inversion pair.
 
-// Optimized Approach:
+// Optimized Approach: TC: O(N * logN), SC: O(N)
+// Using Merge Sort
 let count = 0;
 
 // Given 2 sorted arrays leftArr and rightArr, merge them in a sorted manner into
