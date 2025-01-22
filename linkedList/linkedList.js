@@ -12,8 +12,23 @@ function addAtHead(value, head) {
   return head;
 }
 
+function display(head) {
+  let temp = head;
+  let result = "";
+  while (temp != null) {
+    result += temp.data + " -> ";
+    temp = temp.next;
+  }
+
+  result += "null";
+  console.log(result);
+}
+
 let head = null; // Initially, when the linked list is empty, head is null
 
-head = addAtHead(10, head); // 10 -> null
-head = addAtHead(20, head); // 20 -> 10 -> null
+head = addAtHead(10, head);
+head = addAtHead(20, head);
+head = addAtHead(30, head);
+head = addAtHead(40, head);
 console.log(head);
+display(head); // 40 -> 30 -> 20 -> 10 -> null
