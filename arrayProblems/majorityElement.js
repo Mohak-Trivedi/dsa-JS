@@ -15,22 +15,23 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    let majorEle = nums[0];
-    let count = 1;
+    let curr = -1;
+    let count = 0;
 
-    for(let i = 1;i < nums.length;i++) {
+    for(let num of nums) {
         if(count === 0) {
-            majorEle = nums[i];
-        }
-
-        if(nums[i] === majorEle) {
-            count++;
+            curr = num;
+            count = 1;
         } else {
-            count--;
+            if(num === curr) {
+                count++;
+            } else {
+                count--;
+            }
         }
     }
 
-    return majorEle;
+    return curr;
 };
 
 // How are we sure that this always works?
