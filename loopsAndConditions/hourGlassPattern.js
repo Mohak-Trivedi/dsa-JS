@@ -21,33 +21,31 @@ o/p:
 */
 
 function printPattern(n) {
-    for(let row = 1;row <= n;row++) {
-        let spaces = row - 1;
-        let str = "";
-        for(let i = 1;i <= spaces;i++) {
-            str += " ";
-        }
+  for (let i = 1; i <= n; i++) {
+    let str = "";
 
-        for(let num = row;num <= n;num++) {
-            str += num + " ";
-        }
-
-        console.log(str);
+    for (let j = 1; j <= i - 1; j++) {
+      str += " ";
     }
 
-    for(let row = 1;row < n;row++) {
-        let spaces = n - row - 1;
-        let str = "";
-        for(let i = 1;i <= spaces;i++) {
-            str += " ";
-        }
-
-        for(let num = n - row;num <= n;num++) {
-            str += num + " ";
-        }
-
-        console.log(str);
+    for (let num = i; num <= n; num++) {
+      str += num + " ";
     }
+    console.log(str);
+  }
+
+  for (let i = n - 1; i >= 1; i--) {
+    let str = "";
+
+    for (let j = 1; j <= i - 1; j++) {
+      str += " ";
+    }
+
+    for (let num = i; num <= n; num++) {
+      str += num + " ";
+    }
+    console.log(str);
+  }
 }
 
 printPattern(7);

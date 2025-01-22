@@ -1,17 +1,17 @@
 // Problem: Given a string, print each unique character and its frequency.
 
 function getFreq(str) {
-    let freqMap = {};
+  const freqMap = {};
 
-    for(let c of str) {
-        if(freqMap[c]) {
-            freqMap[c] += 1;
-        } else {
-            freqMap[c] = 1;
-        }
+  for (let c of str) {
+    if (freqMap[c]) {
+      freqMap[c]++;
+    } else {
+      freqMap[c] = 1;
     }
+  }
 
-    return freqMap;
+  return freqMap;
 }
 
-console.log(getFreq('javascript'));
+console.log(getFreq("javascript"));

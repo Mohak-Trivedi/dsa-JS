@@ -1,6 +1,6 @@
 // Problem:
 // Given an array containing only 0s and 1s. The data is shuffled randomly.
-// Write a function that can rearrange the data such that all the 0s are 
+// Write a function that can rearrange the data such that all the 0s are
 // present before all the 1s.
 // Do this without creating any new array, and you may access each element only
 // once i.e. do it in a single pass.
@@ -18,30 +18,30 @@
 // arr[0, i-1] i.e. on left of ith element: all 0s
 // arr[j+1, n-1] i.e. on right of jth element: all 1s
 // arr[i, j] i.e. from i to j: unsorted i.e. mixture of 0s and 1s
-// Now for each element in arr[i, j], we need to put it before i (if 0) or 
+// Now for each element in arr[i, j], we need to put it before i (if 0) or
 // after j (if 1).
-// So, if(arr[i] === 0), simply move i to its right so it autmatically falls in 
+// So, if(arr[i] === 0), simply move i to its right so it autmatically falls in
 // arr[0, i-1], else i.e. arr[i]===1, then swap it with arr[j] and now since we
 // are sure that arr[j]===1, move j to left i.e. j-- so that this 1 automatically
 // falls in arr[i+1, n-1]
 function swap(arr, i, j) {
-    let temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+  const temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
 }
 
 function separate(arr) {
-    let i = 0;
-    let j = arr.length - 1;
+  let i = 0,
+    j = arr.length - 1;
 
-    while(i < j) {
-        if(arr[i] === 1) {
-            swap(arr, i, j);
-            j--;
-        } else {
-            i++;
-        }
+  while (i < j) {
+    if (arr[i] === 1) {
+      swap(arr, i, j);
+      j--;
+    } else {
+      i++;
     }
+  }
 }
 
 let arr = [1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1];
@@ -52,9 +52,9 @@ console.log(arr);
 // Why not do i++ and why just j-- after swapping arr[i] with arr[j] when arr[i]
 // was found as 1?
 // Answer:
-// Because, we are sure that the value that moved from i to j was 1, but we are 
+// Because, we are sure that the value that moved from i to j was 1, but we are
 // not sure whether the value that moved from j to i was 0 or not, if we would've
-// been sure that it will always be 0 then we would've also moved i++, but that's 
+// been sure that it will always be 0 then we would've also moved i++, but that's
 // not always the case.
 
 // Why check only for i, why not also check if(arr[j]===1) j-- ?
