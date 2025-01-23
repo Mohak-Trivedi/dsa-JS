@@ -12,6 +12,25 @@ function addAtHead(value, head) {
   return head;
 }
 
+function addAtTail(value, head) {
+  // No tail in case of empty linked list, so it's like adding a head
+  if (head === null) {
+    return addAtHead(value, head);
+  }
+
+  // traverse to reach the current tail node
+  let temp = head;
+  while (temp.next != null) {
+    temp = temp.next;
+  }
+  // now temp points to tail node
+  // create a new node and make it the new tail
+  const newNode = createNode(value);
+  temp.next = newNode;
+
+  return head;
+}
+
 function display(head) {
   let temp = head;
   let result = "";
@@ -30,5 +49,6 @@ head = addAtHead(10, head);
 head = addAtHead(20, head);
 head = addAtHead(30, head);
 head = addAtHead(40, head);
+head = addAtTail(50, head);
 console.log(head);
-display(head); // 40 -> 30 -> 20 -> 10 -> null
+display(head); // 40 -> 30 -> 20 -> 10 -> 50 -> null
