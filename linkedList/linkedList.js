@@ -42,6 +42,30 @@ function removeHead(head) {
   return newHead;
 }
 
+function removeTail(head) {
+  // Make the 2nd last i.e. the node before tail as the last node by making its
+  // next as null. This way, the tail node will get de-linked from linked list
+  // and garbage collected.
+  // Tail node is found by looking for node whose next is null, so to find
+  // second last node, find the node whose next's next is null.
+
+  if (head === null) return null;
+
+  // Apart from empty list, another edge case is single node in linked-list as
+  // in that case, next is null, so no way to find next of next.
+
+  if (head.next === null) return null;
+
+  let temp = head;
+  while (temp.next.next != null) {
+    temp = temp.next;
+  }
+  // temp now points to the 2nd last node
+  temp.next = null;
+
+  return head;
+}
+
 function display(head) {
   let temp = head;
   let result = "";
@@ -65,4 +89,5 @@ console.log(head);
 display(head); // 40 -> 30 -> 20 -> 10 -> 50 -> null
 head = removeHead(head);
 head = removeHead(head);
+head = removeTail(head);
 display(head);
