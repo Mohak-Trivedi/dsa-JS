@@ -31,6 +31,31 @@ function addAtTail(value, head) {
   return head;
 }
 
+function addAt(i, value, head) {
+  if (i === 0 || head === null) {
+    return addAtHead(value, head);
+  }
+
+  let temp = head;
+  let index = 0;
+  const prevNodeIndex = i - 1;
+  while (index != prevNodeIndex && temp.next != null) {
+    temp = temp.next;
+    index++;
+  }
+  if (index === prevNodeIndex) {
+    // temp now points to i-1th node.
+    const newNode = createNode(value);
+    const prevIthNode = temp.next;
+    newNode.next = prevIthNode;
+    temp.next = newNode;
+  } else {
+    console.log("Index must be less than linked list length");
+  }
+
+  return head;
+}
+
 function removeHead(head) {
   if (head === null) return null;
 
@@ -90,4 +115,7 @@ display(head); // 40 -> 30 -> 20 -> 10 -> 50 -> null
 head = removeHead(head);
 head = removeHead(head);
 head = removeTail(head);
+display(head);
+head = addAt(1, 100, head);
+head = addAt(0, 99, head);
 display(head);
