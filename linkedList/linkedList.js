@@ -31,6 +31,17 @@ function addAtTail(value, head) {
   return head;
 }
 
+function removeHead(head) {
+  if (head === null) return null;
+
+  // To remove current head, we need to make its next as null, so that it is
+  // garbage collected.
+  // But, new head will be the current head's next, so, store it first.
+  const newHead = head.next;
+  head.next = null;
+  return newHead;
+}
+
 function display(head) {
   let temp = head;
   let result = "";
@@ -52,3 +63,6 @@ head = addAtHead(40, head);
 head = addAtTail(50, head);
 console.log(head);
 display(head); // 40 -> 30 -> 20 -> 10 -> 50 -> null
+head = removeHead(head);
+head = removeHead(head);
+display(head);
