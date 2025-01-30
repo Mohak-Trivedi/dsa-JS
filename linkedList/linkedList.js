@@ -91,6 +91,34 @@ function removeTail(head) {
   return head;
 }
 
+function removeAt(i, head) {
+  if (head === null) {
+    console.log("Can't remove from an empty Linked List");
+    return head;
+  }
+
+  if (head.next === null || i === 0) {
+    return removeHead(head);
+  }
+
+  let temp = head;
+  let idx = 0;
+  while (idx < i - 1 && temp.next != null) {
+    temp = temp.next;
+    idx++;
+  }
+  if (idx === i - 1) {
+    const nodeToBeRemoved = temp.next;
+    const nextOfRemoved = nodeToBeRemoved.next;
+    temp.next = nextOfRemoved;
+    nodeToBeRemoved.next = null;
+  } else {
+    console.log("Index must be less than the length of the Linked List");
+  }
+
+  return head;
+}
+
 function display(head) {
   let temp = head;
   let result = "";
@@ -118,4 +146,6 @@ head = removeTail(head);
 display(head);
 head = addAt(1, 100, head);
 head = addAt(0, 99, head);
+display(head);
+head = removeAt(5, head);
 display(head);
