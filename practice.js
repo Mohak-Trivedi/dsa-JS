@@ -1,125 +1,42 @@
-function createNode(value) {
-  const node = {
-    data: value,
-    next: null,
-  };
-
-  return node;
-}
-
-function addAtHead(head, value) {
-  const newNode = createNode(value);
-
-  if (head === null) return newNode;
-
-  newNode.next = head;
-
-  return newNode;
-}
-
-function addAtTail(head, value) {
-  if (head === null) {
-    return addAtHead(head, value);
-  }
-
-  const newNode = createNode(value);
-  let temp = head;
-  while (temp.next != null) {
-    temp = temp.next;
-  }
-  temp.next = newNode;
-
-  return head;
-}
-
-function addAt(head, index, value) {
-  if (head === null) {
-    return addAtHead(head, value);
-  }
-
-  let temp = head;
-  let idx = 0;
-  while (idx != index - 1 && temp != null) {
-    temp = temp.next;
-    idx++;
-  }
-  if (idx === index - 1) {
-    const newNode = createNode(value);
-    newNode.next = temp.next;
-    temp.next = newNode;
-  } else {
+function matrixMul(matrix1, matrix2) {
+  if (matrix1[0].length !== matrix2.length) {
     console.log(
-      "Index must not be greater than the length of the linked list."
+      "Invalid matrices for computing product. The number of columns in matrix 1 must be equal to the number of rows in matrix 2"
     );
   }
 
-  return head;
+  const matrix1rows = matrix1.length;
+  const matrix1cols = matrix1[0].length;
+  const matrix2cols = matrix2[0].length;
+  const resultRows = matrix1rows;
+  const resultCols = matrix2cols;
+  const result = Array(resultRows);
+  for (let row = 0; row < result.length; row++) {
+    result[row] = Array(resultCols);
+  }
+
+  for (let row = 0; row < result.length; row++) {
+    for (let col = 0; col < result[0].length; col++) {
+      let product = 0;
+      for (let i = 0; i < matrix1cols; i++) {
+        product += matrix1[row][i] * matrix2[i][col];
+      }
+      result[row][col] = product;
+    }
+  }
+
+  return result;
 }
 
-function removeHead(head) {
-  if (head === null) {
-    console.log("Can't remove any node from an empty linked list.");
-    return null;
-  }
+const matrix1 = [
+  [1, 1],
+  [2, 2],
+  [3, 3],
+];
 
-  if (head.next === null) {
-    console.log(
-      "Removing the only node that was present. Now the Linked List is empty."
-    );
-    return null;
-  }
+const matrix2 = [
+  [1, 1, 1],
+  [2, 2, 2],
+];
 
-  const newHead = head.next;
-  head.next = null;
-  return newHead;
-}
-
-function removeTail(head) {
-  if (head === null) {
-    console.log("Can't remove any node from an empty linked list.");
-    return null;
-  }
-
-  if (head.next === null) {
-    return removeHead(head);
-  }
-
-  let temp = head;
-  while (temp.next.next != null) {
-    temp = temp.next;
-  }
-  temp.next = null;
-
-  return head;
-}
-
-function display(head) {
-  if (head === null) {
-    console.log("Linked List is empty.");
-  }
-
-  let str = "";
-  let temp = head;
-  while (temp != null) {
-    str += temp.data + " -> ";
-    temp = temp.next;
-  }
-  str += "null";
-  console.log(str);
-}
-
-let head = null;
-head = addAtHead(head, 10);
-head = addAtHead(head, 20);
-head = addAtHead(head, 30);
-display(head);
-head = addAtTail(head, 40);
-display(head);
-head = removeHead(head);
-display(head);
-head = removeTail(head);
-display(head);
-head = addAtTail(head, 50);
-display(head);
-head = addAt(head, 2, 60);
-display(head);
+console.log(matrixMul(matrix1, matrix2));
