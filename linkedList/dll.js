@@ -19,6 +19,20 @@ function addAtHead(value, head) {
   return head;
 }
 
+function addAtTail(value, head) {
+  if (head === null) return addAtHead(value, head);
+
+  let temp = head;
+  while (temp.next !== null) {
+    temp = temp.next;
+  }
+
+  const newNode = createNode(value);
+  temp.next = newNode;
+  newNode.prev = temp;
+  return head;
+}
+
 function removeAtHead(head) {
   if (head === null) return null;
 
@@ -28,6 +42,23 @@ function removeAtHead(head) {
   head.next = null;
   nextNode.prev = null;
   head = nextNode;
+  return head;
+}
+
+function removeAtTail(head) {
+  if (head === null) return null;
+
+  if (head.next === null) return null;
+
+  let temp = head;
+  while (temp.next.next !== null) {
+    temp = temp.next;
+  }
+
+  const secondLastNode = temp;
+  const tailNode = temp.next;
+  tailNode.prev = null;
+  secondLastNode.next = null;
   return head;
 }
 
@@ -54,4 +85,8 @@ head = addAtHead(30, head);
 head = addAtHead(40, head);
 display(head);
 head = removeAtHead(head);
+display(head);
+head = addAtTail(50, head);
+display(head);
+head = removeAtTail(head);
 display(head);
