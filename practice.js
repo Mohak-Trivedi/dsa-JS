@@ -1,42 +1,124 @@
-function matrixMul(matrix1, matrix2) {
-  if (matrix1[0].length !== matrix2.length) {
-    console.log(
-      "Invalid matrices for computing product. The number of columns in matrix 1 must be equal to the number of rows in matrix 2"
-    );
+/*
+Fails for:
+
+Input
+moves =
+[[2,2],[1,2],[2,1],[1,1],[2,0]]
+
+Output
+"B"
+
+Expected
+"A"
+*/
+
+function hasPlayerWon(mat, playerSymbol) {
+  // row 0/1/2 has playerSymbol only
+  // col 0/1/2 has playerSymbol only
+  // diag 1 i.e. 0,0 1,1 2,2 has playerSymbol only
+  // diag 2 i.e. 0,2 1,1 2,0 has playerSymbol only
+  let oppSymbol;
+  if (playerSymbol === "X") {
+    oppSymbol = "0";
+  } else {
+    oppSymbol = "X";
   }
 
-  const matrix1rows = matrix1.length;
-  const matrix1cols = matrix1[0].length;
-  const matrix2cols = matrix2[0].length;
-  const resultRows = matrix1rows;
-  const resultCols = matrix2cols;
-  const result = Array(resultRows);
-  for (let row = 0; row < result.length; row++) {
-    result[row] = Array(resultCols);
-  }
-
-  for (let row = 0; row < result.length; row++) {
-    for (let col = 0; col < result[0].length; col++) {
-      let product = 0;
-      for (let i = 0; i < matrix1cols; i++) {
-        product += matrix1[row][i] * matrix2[i][col];
+  for (let row = 0; row < mat.length; row++) {
+    let playerWon = true;
+    for (let col = 0; col < mat[0].length; col++) {
+      if (mat[row][col] !== oppSymbol) {
+        playerWon = false;
+        break;
       }
-      result[row][col] = product;
+    }
+    if (playerWon === true) {
+      return playerSymbol;
     }
   }
 
-  return result;
+  for (let col = 0; col < mat[0].length; col++) {
+    let playerWon = true;
+    for (let row = 0; row < mat.length; row++) {
+      if (mat[row][col] !== playerSymbol) {
+        playerWon = false;
+        break;
+      }
+    }
+    if (playerWon === true) {
+      return playerSymbol;
+    }
+  }
+
+  let playerWon = true;
+  for (let i = 0; i < 3; i++) {
+    if (mat[i][i] !== playerSymbol) {
+      playerWon = false;
+      break;
+    }
+  }
+  if (playerWon === true) {
+    return playerSymbol;
+  }
+
+  if (
+    mat[0][2] === playerSymbol &&
+    mat[1][1] === playerSymbol &&
+    mat[2][0] === playerSymbol
+  ) {
+    return playerSymbol;
+  }
 }
 
-const matrix1 = [
-  [1, 1],
-  [2, 2],
-  [3, 3],
-];
+/**
+ * @param {number[][]} moves
+ * @return {string}
+ */
+var tictactoe = function (moves) {
+  // moves_done = 0;
+  // For every move:
+  //      If move index is even i.e. odd move:
+  //          moves[rowi][coli] = 'A'
+  //      else:
+  //          moves[rowi][coli] = 'B'
+  //      moves_done++
+  //
+  //      If A won:
+  //          return 'A'
+  //      If B won:
+  //          return 'B'
+  //      If moves_done === 9:
+  //          return 'Draw'
 
-const matrix2 = [
-  [1, 1, 1],
-  [2, 2, 2],
-];
+  let movesDone = 0;
+  const maxMoves = 9;
+  const gameBoard = [
+    [" ", " ", " "],
+    [" ", " ", " "],
+    [" ", " ", " "],
+  ];
+  for (let i = 0; i < moves.length; i++) {
+    const currMoveRow = moves[i][0];
+    const currMoveCol = moves[i][1];
 
-console.log(matrixMul(matrix1, matrix2));
+    if (i % 2 === 0) {
+      gameBoard[currMoveRow][currMoveCol] = "X";
+    } else {
+      gameBoard[currMoveRow][currMoveCol] = "0";
+    }
+    movesDone++;
+
+    if (hasPlayerWon(gameBoard, "X") === "X") {
+      return "A";
+    }
+    if (hasPlayerWon(gameBoard, "0") === "0") {
+      return "B";
+    }
+  }
+
+  if (movesDone < maxMoves) {
+    return "Pending";
+  } else {
+    return "Draw";
+  }
+};
