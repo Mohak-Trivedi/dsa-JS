@@ -6,14 +6,14 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-  nums.sort((a, b) => a - b); // sort to be able to use 2-pointer approach
+  nums.sort((a, b) => a - b); // sort to be able to use 2-pointer approach as well as to get all the duplicates adjacent making it easier to prevent duplicate triplets
 
   let res = [];
 
   for (let i = 0; i < nums.length; i++) {
     const num = nums[i];
 
-    if (num > 0) break; // not possible to form triplet of sum 0 for this and further elements as first number as the sum will always be >0
+    if (num > 0) break; // not possible to form triplet of sum 0 for this and further elements as all of them are +ve numbers only.
 
     if (i > 0 && num === nums[i - 1]) continue; // avoid duplicate triplets. Same first number -> Same triplet
 
