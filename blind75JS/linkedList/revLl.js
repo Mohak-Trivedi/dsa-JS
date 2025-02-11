@@ -40,7 +40,7 @@ var reverseList = function (head) {
   return prev;
 };
 
-// Recursive Approach:
+// Recursive Approach: TC: O(N), SC: O(N)
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -52,15 +52,15 @@ var reverseList = function (head) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function (head) {
-  if (!head) return null; // edge case - Empty Linked List
+// var reverseList = function (head) {
+//   if (!head) return null; // edge case - Empty Linked List
 
-  if (!head.next) return head; // base case - Single Node Linked List reverse will be same
+//   if (!head.next) return head; // base case - Single Node Linked List reverse will be same
 
-  // Recursive case
-  const newHead = reverseList(head.next);
-  head.next.next = head;
-  head.next = null;
+//   // Recursive case
+//   const newHead = reverseList(head.next);
+//   head.next.next = head;
+//   head.next = null;
 
-  return newHead;
-};
+//   return newHead;
+// };
