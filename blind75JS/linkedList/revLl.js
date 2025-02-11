@@ -39,3 +39,28 @@ var reverseList = function (head) {
 
   return prev;
 };
+
+// Recursive Approach:
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function (head) {
+  if (!head) return null; // edge case - Empty Linked List
+
+  if (!head.next) return head; // base case - Single Node Linked List reverse will be same
+
+  // Recursive case
+  const newHead = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+
+  return newHead;
+};
