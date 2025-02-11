@@ -10,7 +10,7 @@ var threeSum = function (nums) {
 
   let res = [];
 
-  for (let i = 0; i < nums.length; i++) {
+  for (let i = 0; i <= nums.length - 3; i++) {
     const num = nums[i];
 
     if (num > 0) break; // not possible to form triplet of sum 0 for this and further elements as all of them are +ve numbers only.
